@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bushi", "Bushi\Bushi.csproj", "{8E1F0A0C-13A9-4CA0-A77E-FC8F96E459ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BushiTests", "BushiTests\BushiTests.csproj", "{A15B4321-AB4F-4430-9081-8B734BF8535D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8E1F0A0C-13A9-4CA0-A77E-FC8F96E459ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E1F0A0C-13A9-4CA0-A77E-FC8F96E459ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E1F0A0C-13A9-4CA0-A77E-FC8F96E459ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15B4321-AB4F-4430-9081-8B734BF8535D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15B4321-AB4F-4430-9081-8B734BF8535D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15B4321-AB4F-4430-9081-8B734BF8535D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15B4321-AB4F-4430-9081-8B734BF8535D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

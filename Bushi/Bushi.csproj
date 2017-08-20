@@ -43,11 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Enums\CardType.cs" />
+    <Compile Include="Enums\Clan.cs" />
+    <Compile Include="Enums\Set.cs" />
+    <Compile Include="Enums\Side.cs" />
+    <Compile Include="JsonDtos\Card.cs" />
+    <Compile Include="JsonDtos\Pack.cs" />
+    <Compile Include="JsonDtos\PackInformation.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\Common\PackInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
