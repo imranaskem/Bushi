@@ -1,2 +1,1 @@
-Bushi
-A C# wrapper for https://alsciende.github.io/fiveringsdb/
+Bushi - A C# wrapper for https://alsciende.github.io/fiveringsdb/
