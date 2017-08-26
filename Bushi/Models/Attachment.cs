@@ -40,17 +40,19 @@ namespace Bushi.Models
 
         private int ConvertBonusToInt(string bonus)
         {
-            var split = bonus.Split(null);
+            var split = bonus.ToCharArray();
 
             int bonusInt = 0;
 
-            if (split[0] == "+")
+            if (split[0] == '+')
             {
-                bonusInt = int.Parse(split[1]);
+                var numString = split[1].ToString();
+                bonusInt = int.Parse(numString);
             }
             else
             {
-                bonusInt = int.Parse(split[1]);
+                var numString = split[1].ToString();
+                bonusInt = int.Parse(numString);
                 bonusInt = -bonusInt;
             }
 
