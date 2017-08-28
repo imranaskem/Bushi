@@ -48,8 +48,10 @@ namespace Bushi
             return this.Cards;
         }
 
-        public CardDeck GetAllCardsOfClan(Clan clan)
+        public CardDeck GetAllCardsOfClan(Clan clan, bool overrideCache = false)
         {
+            this.RefreshCardData(overrideCache);
+
             return this.Cards.GetAllCardsByClan(clan);
         }
         
