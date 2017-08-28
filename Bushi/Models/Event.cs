@@ -3,6 +3,7 @@ using Bushi.Models.Common;
 using Bushi.JsonDtos;
 using System.Collections.Generic;
 using System;
+using Bushi.Extensions;
 
 namespace Bushi.Models
 {
@@ -23,9 +24,9 @@ namespace Bushi.Models
 
         public Event(Card card)
         {
-            this.Clan = (Clan)Enum.Parse(typeof(Clan), card.Clan);
-            this.Side = (Side)Enum.Parse(typeof(Side), card.Side);
-            this.Type = (CardType)Enum.Parse(typeof(CardType), card.Type);
+            this.Clan = card.Clan.ConvertToEnum<Clan>();
+            this.Type = card.Type.ConvertToEnum<CardType>();
+            this.Side = card.Side.ConvertToEnum<Side>();
             this.Cost = card.Cost;
             this.DeckLimit = card.DeckLimit;
             this.InfluenceCost = card.InfluenceCost;

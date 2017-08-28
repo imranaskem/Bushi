@@ -10,10 +10,62 @@ namespace Bushi.Models
     public class CardDeck
     {
         public BaseDeck<Attachment> Attachments { get; private set; }
+        public BaseDeck<Character> Characters { get; private set; }
+        public BaseDeck<Event> Events { get; private set; }
+        public BaseDeck<Holding> Holdings { get; private set; }
+        public BaseDeck<Province> Provinces { get; private set; }
+        public BaseDeck<Role> Roles { get; private set; }
+        public BaseDeck<Stronghold> Strongholds { get; private set; }
 
-        public CardDeck(List<Card> cards)
+        public CardDeck(IEnumerable<Card> cards)
         {
             this.Attachments = new BaseDeck<Attachment>();
+            this.Characters = new BaseDeck<Character>();
+            this.Events = new BaseDeck<Event>();
+            this.Holdings = new BaseDeck<Holding>();
+            this.Provinces = new BaseDeck<Province>();
+            this.Roles = new BaseDeck<Role>();
+            this.Strongholds = new BaseDeck<Stronghold>();
+
+            this.ParseCards(cards);
+        }
+
+        private void ParseCards(IEnumerable<Card> cards)
+        {
+            foreach (var card in cards)
+            {
+                switch (card.Type)
+                {
+                    case "attachment":
+                        var newAttachment = new Attachment(card);
+                        this.Attachments.Add(newAttachment);
+                        break;
+                    case "character":
+                        var newChar = new Character(card);
+                        this.Characters.Add(newChar);
+                        break;
+                    case "event":
+                        var newEvent = new Event(card);
+                        this.Events.Add(newEvent);
+                        break;
+                    case "holding":
+                        var newHolding = new Holding(card);
+                        this.Holdings.Add(newHolding);
+                        break;
+                    case "province":
+                        var newProvince = new Province(card);
+                        this.Provinces.Add(newProvince);
+                        break;
+                    case "role":
+                        var newRole = new Role(card);
+                        this.Roles.Add(newRole);
+                        break;
+                    case "stronghold":
+                        var newStrong = new Stronghold(card);
+                        this.Strongholds.Add(newStrong);
+                        break;
+                }
+            }
         }
     }
 }

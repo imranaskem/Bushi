@@ -15,15 +15,15 @@ public class AttachmentTests
         {
             Illustrator = "Imran Askem",
             Pack = new Pack() { Id = "1" },
-            Position = 12,
+            Position = "12",
             Quantity = 3
         };
 
         var jsonInfo = new Card()
         {
-            Clan = "Lion",
-            Side = "Conflict",
-            Type = "Attachment",
+            Clan = "lion",
+            Side = "conflict",
+            Type = "attachment",
             Cost = 1,
             DeckLimit = 1,
             InfluenceCost = 1,
@@ -55,7 +55,7 @@ public class AttachmentTests
         {
             Illustrator = "Imran Askem",
             Pack = new Pack() { Id = "1" },
-            Position = 12,
+            Position = "12",
             Quantity = 3
         };
 

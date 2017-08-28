@@ -16,7 +16,7 @@ public class BaseDeckTests
         {
             Illustrator = "Imran Askem",
             Pack = new Pack() { Id = "1" },
-            Position = 12,
+            Position = "12",
             Quantity = 3
         };
 

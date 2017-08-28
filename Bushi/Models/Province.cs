@@ -3,6 +3,7 @@ using Bushi.Models.Common;
 using Bushi.JsonDtos;
 using System.Collections.Generic;
 using System;
+using Bushi.Extensions;
 
 namespace Bushi.Models
 {
@@ -21,8 +22,8 @@ namespace Bushi.Models
 
         public Province(Card card)
         {
-            this.Clan = (Clan)Enum.Parse(typeof(Clan), card.Clan);
-            this.Type = (CardType)Enum.Parse(typeof(CardType), card.Type);
+            this.Clan = card.Clan.ConvertToEnum<Clan>();
+            this.Type = card.Type.ConvertToEnum<CardType>();
             this.DeckLimit = card.DeckLimit;
             this.Strength = (int)card.Strength;
             this.Traits = new List<string>();

@@ -11,7 +11,7 @@ namespace Bushi.Enums
         Dragon,
         Lion,
         Neutral,
-        Pheonix,
+        Phoenix,
         Scorpion,
         Unicorn
     }

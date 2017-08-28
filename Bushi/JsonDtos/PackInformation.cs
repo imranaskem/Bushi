@@ -16,7 +16,7 @@ namespace Bushi.JsonDtos
         public Pack Pack { get; set; }
 
         [JsonProperty("position")]
-        public int Position { get; set; }
+        public string Position { get; set; }
 
         [JsonProperty("quantity")]
         public int Quantity { get; set; }

@@ -9,26 +9,26 @@ namespace Bushi.Models
 {
     public class BaseDeck<T> : IEnumerable<T>
     {
-        private List<T> Attachments { get; set; }
+        private List<T> Cards { get; set; }
 
         public BaseDeck()
         {
-            this.Attachments = new List<T>();
+            this.Cards = new List<T>();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return this.Attachments.GetEnumerator();
+            return this.Cards.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.Attachments.GetEnumerator();
+            return this.Cards.GetEnumerator();
         }
 
         public void Add(T card)
         {
-            this.Attachments.Add(card);
+            this.Cards.Add(card);
         }
     }
 }

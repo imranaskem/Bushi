@@ -3,6 +3,7 @@ using Bushi.Models.Common;
 using Bushi.JsonDtos;
 using System.Collections.Generic;
 using System;
+using Bushi.Extensions;
 
 namespace Bushi.Models
 {
@@ -22,11 +23,11 @@ namespace Bushi.Models
 
         public Holding(Card card)
         {
-            this.Clan = (Clan)Enum.Parse(typeof(Clan), card.Clan);
-            this.Side = (Side)Enum.Parse(typeof(Side), card.Side);
-            this.Type = (CardType)Enum.Parse(typeof(CardType), card.Type);
+            this.Clan = card.Clan.ConvertToEnum<Clan>();
+            this.Type = card.Type.ConvertToEnum<CardType>();
+            this.Side = card.Side.ConvertToEnum<Side>();
             this.DeckLimit = card.DeckLimit;
-            this.StrengthBonus = this.ConvertBonusToInt(card.StrengthBonus);
+            this.StrengthBonus = card.StrengthBonus.ConvertBonusToInt();
             this.CardText = card.TextCanonical;
             this.Traits = new List<string>();
             this.Traits.AddRange(card.Traits);
@@ -34,27 +35,6 @@ namespace Bushi.Models
             this.PackInfo = new PackInfo(card.PackCards);
             this.Name = card.Name;
             this.Id = card.Id;
-        }
-
-        private int ConvertBonusToInt(string bonus)
-        {
-            var split = bonus.ToCharArray();
-
-            int bonusInt = 0;
-
-            if (split[0] == '+')
-            {
-                var numString = split[1].ToString();
-                bonusInt = int.Parse(numString);
-            }
-            else
-            {
-                var numString = split[1].ToString();
-                bonusInt = int.Parse(numString);
-                bonusInt = -bonusInt;
-            }
-
-            return bonusInt;
         }
     }
 }

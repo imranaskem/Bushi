@@ -1,4 +1,5 @@
 ﻿using Bushi.Enums;
+using Bushi.Extensions;
 using Bushi.Models.Common;
 using Bushi.JsonDtos;
 using System.Collections.Generic;
@@ -23,44 +24,23 @@ namespace Bushi.Models
         public string Name { get; }
         public string Id { get; }
 
-        public Attachment(Card cardFromJson)
+        public Attachment(Card card)
         {
-            this.Clan = (Clan)Enum.Parse(typeof(Clan), cardFromJson.Clan);
-            this.Side = (Side)Enum.Parse(typeof(Side), cardFromJson.Side);
-            this.Type = (CardType)Enum.Parse(typeof(CardType), cardFromJson.Type);
-            this.Cost = cardFromJson.Cost;
-            this.DeckLimit = cardFromJson.DeckLimit;
-            this.InfluenceCost = cardFromJson.InfluenceCost;
-            this.MilitaryBonus = this.ConvertBonusToInt(cardFromJson.MilitaryBonus);
-            this.PoliticalBonus = this.ConvertBonusToInt(cardFromJson.PoliticalBonus);
-            this.CardText = cardFromJson.TextCanonical;
+            this.Clan = card.Clan.ConvertToEnum<Clan>();
+            this.Type = card.Type.ConvertToEnum<CardType>();
+            this.Side = card.Side.ConvertToEnum<Side>();
+            this.Cost = card.Cost;
+            this.DeckLimit = card.DeckLimit;
+            this.InfluenceCost = card.InfluenceCost;
+            this.MilitaryBonus = card.MilitaryBonus.ConvertBonusToInt();
+            this.PoliticalBonus = card.PoliticalBonus.ConvertBonusToInt();
+            this.CardText = card.TextCanonical;
             this.Traits = new List<string>();
-            this.Traits.AddRange(cardFromJson.Traits);
-            this.Unique = cardFromJson.Unicity;
-            this.PackInfo = new PackInfo(cardFromJson.PackCards);
-            this.Name = cardFromJson.Name;
-            this.Id = cardFromJson.Id;
-        }
-
-        private int ConvertBonusToInt(string bonus)
-        {
-            var split = bonus.ToCharArray();
-
-            int bonusInt = 0;
-
-            if (split[0] == '+')
-            {
-                var numString = split[1].ToString();
-                bonusInt = int.Parse(numString);
-            }
-            else
-            {
-                var numString = split[1].ToString();
-                bonusInt = int.Parse(numString);
-                bonusInt = -bonusInt;
-            }
-
-            return bonusInt;
-        }
+            this.Traits.AddRange(card.Traits);
+            this.Unique = card.Unicity;
+            this.PackInfo = new PackInfo(card.PackCards);
+            this.Name = card.Name;
+            this.Id = card.Id;
+        }        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Bushi.Enums;
+using Bushi.Extensions;
 using Bushi.Models.Common;
 using Bushi.JsonDtos;
 using System.Collections.Generic;
@@ -24,24 +25,41 @@ namespace Bushi.Models
         public string Name { get; }
         public string Id { get; }
 
-        public Character(Card cardFromJson)
+        public Character(Card card)
         {
-            this.Clan = (Clan)Enum.Parse(typeof(Clan), cardFromJson.Clan);
-            this.Side = (Side)Enum.Parse(typeof(Side), cardFromJson.Side);
-            this.Type = (CardType)Enum.Parse(typeof(CardType), cardFromJson.Type);
-            this.Cost = cardFromJson.Cost;
-            this.DeckLimit = cardFromJson.DeckLimit;
-            this.Glory = (int)cardFromJson.Glory;
-            this.InfluenceCost = cardFromJson.InfluenceCost;
-            this.Military = (int)cardFromJson.Military;
-            this.Political = (int)cardFromJson.Political;
-            this.CardText = cardFromJson.TextCanonical;
+            this.Clan = card.Clan.ConvertToEnum<Clan>();
+            this.Type = card.Type.ConvertToEnum<CardType>();
+            this.Side = card.Side.ConvertToEnum<Side>();
+            this.Cost = card.Cost;
+            this.DeckLimit = card.DeckLimit;
+            this.Glory = (int)card.Glory;
+            this.InfluenceCost = card.InfluenceCost;
+
+            if (card.Military == null)
+            {
+                this.Military = 0;
+            }
+            else
+            {
+                this.Military = (int)card.Military;
+            }
+
+            if (card.Political == null)
+            {
+                this.Political = 0;
+            }
+            else
+            {
+                this.Political = (int)card.Political;
+            }
+
+            this.CardText = card.TextCanonical;
             this.Traits = new List<string>();
-            this.Traits.AddRange(cardFromJson.Traits);
-            this.Unique = cardFromJson.Unicity;
-            this.PackInfo = new PackInfo(cardFromJson.PackCards);
-            this.Name = cardFromJson.Name;
-            this.Id = cardFromJson.Id;
-        }
+            this.Traits.AddRange(card.Traits);
+            this.Unique = card.Unicity;
+            this.PackInfo = new PackInfo(card.PackCards);
+            this.Name = card.Name;
+            this.Id = card.Id;
+        }    
     }
 }
