@@ -11,6 +11,7 @@ namespace Bushi.Enums
         Event,
         Holding,
         Province,
+        Role,
         Stronghold
     }
 }
