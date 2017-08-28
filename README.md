@@ -1,4 +1,4 @@
-#Bushi
+# Bushi
 
 A C# helper library for [FiveRingsDB](https://alsciende.github.io/fiveringsdb/)
 
