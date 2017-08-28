@@ -1,4 +1,5 @@
-﻿using Bushi.JsonDtos;
+﻿using Bushi.Enums;
+using Bushi.JsonDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,17 @@ namespace Bushi.Models
         public BaseDeck<Role> Roles { get; private set; }
         public BaseDeck<Stronghold> Strongholds { get; private set; }
 
+        public CardDeck()
+        {
+            this.Attachments = new BaseDeck<Attachment>();
+            this.Characters = new BaseDeck<Character>();
+            this.Events = new BaseDeck<Event>();
+            this.Holdings = new BaseDeck<Holding>();
+            this.Provinces = new BaseDeck<Province>();
+            this.Roles = new BaseDeck<Role>();
+            this.Strongholds = new BaseDeck<Stronghold>();
+        }
+
         public CardDeck(IEnumerable<Card> cards)
         {
             this.Attachments = new BaseDeck<Attachment>();
@@ -28,6 +40,21 @@ namespace Bushi.Models
             this.Strongholds = new BaseDeck<Stronghold>();
 
             this.ParseCards(cards);
+        }
+
+        public CardDeck GetAllCardsByClan(Clan clan)
+        {
+            var newCardDeck = new CardDeck();
+
+            newCardDeck.Attachments = this.Attachments.GetCardsByClan(clan);
+            newCardDeck.Characters = this.Characters.GetCardsByClan(clan);
+            newCardDeck.Events = this.Events.GetCardsByClan(clan);
+            newCardDeck.Holdings = this.Holdings.GetCardsByClan(clan);
+            newCardDeck.Provinces = this.Provinces.GetCardsByClan(clan);
+            newCardDeck.Roles = this.Roles.GetCardsByClan(clan);
+            newCardDeck.Strongholds = this.Strongholds.GetCardsByClan(clan);
+
+            return newCardDeck;
         }
 
         private void ParseCards(IEnumerable<Card> cards)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bushi.Enums;
+using Bushi.Interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bushi.Models
 {
-    public class BaseDeck<T> : IEnumerable<T>
+    public class BaseDeck<T> : IEnumerable<T> where T: IClan
     {
         private List<T> Cards { get; set; }
 
@@ -29,6 +31,17 @@ namespace Bushi.Models
         public void Add(T card)
         {
             this.Cards.Add(card);
+        }
+
+        public BaseDeck<T> GetCardsByClan(Clan clan)
+        {
+            var newDeck = new BaseDeck<T>();
+
+            var clanCards = this.Cards.Where(card => card.Clan == clan).ToList();
+
+            newDeck.Cards = clanCards;
+
+            return newDeck;
         }
     }
 }

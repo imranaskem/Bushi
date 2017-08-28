@@ -41,16 +41,21 @@ namespace Bushi
             this.LastRequestTime = DateTime.MinValue;
         }
 
-        public CardDeck GetAllCards()
+        public CardDeck GetAllCards(bool overrideCache = false)
         {
-            this.RefreshCardData();
+            this.RefreshCardData(overrideCache);
 
             return this.Cards;
         }
-        
-        public IEnumerable GetCardsOfType(CardType type)
+
+        public CardDeck GetAllCardsOfClan(Clan clan)
         {
-            this.RefreshCardData();
+            return this.Cards.GetAllCardsByClan(clan);
+        }
+        
+        public IEnumerable GetCardsOfType(CardType type, bool overrideCache = false)
+        {
+            this.RefreshCardData(overrideCache);
 
             switch (type)
             {
@@ -73,9 +78,9 @@ namespace Bushi
             }
         }
 
-        private void RefreshCardData()
+        private void RefreshCardData(bool overrideCache)
         {
-            if (this.ShouldDateBeRefreshed)
+            if (this.ShouldDateBeRefreshed || overrideCache)
             {
                 var client = new RestClient(baseUri);
                 var request = new RestRequest(cardsUri, Method.GET);

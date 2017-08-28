@@ -4,10 +4,11 @@ using Bushi.Models.Common;
 using Bushi.JsonDtos;
 using System.Collections.Generic;
 using System;
+using Bushi.Interfaces;
 
 namespace Bushi.Models
 {
-    public class Attachment
+    public class Attachment : IClan
     {
         public bool Unique { get; }
         public CardType Type { get; }

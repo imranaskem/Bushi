@@ -4,10 +4,11 @@ using Bushi.JsonDtos;
 using System.Collections.Generic;
 using System;
 using Bushi.Extensions;
+using Bushi.Interfaces;
 
 namespace Bushi.Models
 {
-    public class Event
+    public class Event : IClan
     {
         public bool Unique { get; }
         public CardType Type { get; }
