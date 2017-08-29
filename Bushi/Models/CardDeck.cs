@@ -75,11 +75,11 @@ namespace Bushi.Models
             return newCardDeck;
         }
 
-        public IBasicCard GetCardsByName(string name)
+        public IEnumerable<IBasicCard> GetCardsByName(string name)
         {
             var card = this.Attachments.SingleOrDefault(attachment => attachment.Name.ToLower().Contains(name.ToLower()));
 
-            return card;
+            return new IBasicCard[] { card };
         }        
 
         private void ParseCards(IEnumerable<Card> cards)
