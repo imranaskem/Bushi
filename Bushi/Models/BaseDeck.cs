@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bushi.Models
 {
-    public class BaseDeck<T> : IEnumerable<T> where T: IClan
+    public class BaseDeck<T> : IEnumerable<T> where T: IClan, ISide
     {
         private List<T> Cards { get; set; }
 
@@ -39,7 +39,28 @@ namespace Bushi.Models
 
             var clanCards = this.Cards.Where(card => card.Clan == clan).ToList();
 
+            if (clanCards == null)
+            {
+                return (BaseDeck<T>)Enumerable.Empty<T>();
+            }
+
             newDeck.Cards = clanCards;
+
+            return newDeck;
+        }
+
+        public BaseDeck<T> GetCardsBySide(Side side)
+        {
+            var newDeck = new BaseDeck<T>();
+
+            var sideCards = this.Cards.Where(card => card.Side == side).ToList();
+
+            if (sideCards == null)
+            {
+                return (BaseDeck<T>)Enumerable.Empty<T>();
+            }
+
+            newDeck.Cards = sideCards;
 
             return newDeck;
         }

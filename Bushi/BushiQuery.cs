@@ -54,6 +54,13 @@ namespace Bushi
 
             return this.Cards.GetAllCardsByClan(clan);
         }
+
+        public CardDeck GetAllCardsOfDeck(Side side, bool overrideCache = false)
+        {
+            this.RefreshCardData(overrideCache);
+
+            return this.Cards.GetAllCardsBySide(side);
+        }
         
         public IEnumerable GetCardsOfType(CardType type, bool overrideCache = false)
         {

@@ -7,6 +7,7 @@ namespace Bushi.Enums
     public enum Side
     {
         Conflict,
-        Dynasty
+        Dynasty,
+        None
     }
 }

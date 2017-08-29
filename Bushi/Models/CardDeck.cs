@@ -44,15 +44,32 @@ namespace Bushi.Models
 
         public CardDeck GetAllCardsByClan(Clan clan)
         {
-            var newCardDeck = new CardDeck();
+            var newCardDeck = new CardDeck
+            {
+                Attachments = this.Attachments.GetCardsByClan(clan),
+                Characters = this.Characters.GetCardsByClan(clan),
+                Events = this.Events.GetCardsByClan(clan),
+                Holdings = this.Holdings.GetCardsByClan(clan),
+                Provinces = this.Provinces.GetCardsByClan(clan),
+                Roles = this.Roles.GetCardsByClan(clan),
+                Strongholds = this.Strongholds.GetCardsByClan(clan)
+            };
 
-            newCardDeck.Attachments = this.Attachments.GetCardsByClan(clan);
-            newCardDeck.Characters = this.Characters.GetCardsByClan(clan);
-            newCardDeck.Events = this.Events.GetCardsByClan(clan);
-            newCardDeck.Holdings = this.Holdings.GetCardsByClan(clan);
-            newCardDeck.Provinces = this.Provinces.GetCardsByClan(clan);
-            newCardDeck.Roles = this.Roles.GetCardsByClan(clan);
-            newCardDeck.Strongholds = this.Strongholds.GetCardsByClan(clan);
+            return newCardDeck;
+        }
+
+        public CardDeck GetAllCardsBySide(Side side)
+        {
+            var newCardDeck = new CardDeck
+            {
+                Attachments = this.Attachments.GetCardsBySide(side),
+                Characters = this.Characters.GetCardsBySide(side),
+                Events = this.Events.GetCardsBySide(side),
+                Holdings = this.Holdings.GetCardsBySide(side),
+                Provinces = this.Provinces.GetCardsBySide(side),
+                Roles = this.Roles.GetCardsBySide(side),
+                Strongholds = this.Strongholds.GetCardsBySide(side)
+            };
 
             return newCardDeck;
         }

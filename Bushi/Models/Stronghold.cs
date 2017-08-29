@@ -8,11 +8,12 @@ using Bushi.Interfaces;
 
 namespace Bushi.Models
 {
-    public class Stronghold : IClan
+    public class Stronghold : IClan, ISide
     {
         public bool Unique { get; }
         public CardType Type { get; }
         public Clan Clan { get; }
+        public Side Side { get; }
         public int DeckLimit { get; }
         public int Honor { get; }
         public int Fate { get; }
@@ -28,6 +29,7 @@ namespace Bushi.Models
         {
             this.Clan = card.Clan.ConvertToEnum<Clan>();
             this.Type = card.Type.ConvertToEnum<CardType>();
+            this.Side = Side.None;
             this.DeckLimit = card.DeckLimit;
             this.Honor = (int)card.Honor;
             this.Fate = (int)card.Fate;

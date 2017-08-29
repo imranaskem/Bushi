@@ -8,11 +8,12 @@ using Bushi.Interfaces;
 
 namespace Bushi.Models
 {
-    public class Province : IClan
+    public class Province : IClan, ISide
     {
         public bool Unique { get; }
         public CardType Type { get; }
         public Clan Clan { get; }
+        public Side Side { get; }
         public int DeckLimit { get; }
         public int Strength { get; }
         public List<string> Traits { get; }
@@ -25,6 +26,7 @@ namespace Bushi.Models
         {
             this.Clan = card.Clan.ConvertToEnum<Clan>();
             this.Type = card.Type.ConvertToEnum<CardType>();
+            this.Side = Side.None;
             this.DeckLimit = card.DeckLimit;
             this.Strength = (int)card.Strength;
             this.Traits = new List<string>();
