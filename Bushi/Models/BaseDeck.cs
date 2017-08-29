@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bushi.Models
 {
-    public class BaseDeck<T> : IEnumerable<T> where T: IClan, ISide
+    public class BaseDeck<T> : IEnumerable<T> where T: IBasicCard
     {
         private List<T> Cards { get; set; }
 

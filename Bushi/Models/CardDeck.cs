@@ -1,4 +1,5 @@
 ﻿using Bushi.Enums;
+using Bushi.Interfaces;
 using Bushi.JsonDtos;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,13 @@ namespace Bushi.Models
 
             return newCardDeck;
         }
+
+        public IBasicCard GetCardsByName(string name)
+        {
+            var card = this.Attachments.SingleOrDefault(attachment => attachment.Name.ToLower().Contains(name.ToLower()));
+
+            return card;
+        }        
 
         private void ParseCards(IEnumerable<Card> cards)
         {

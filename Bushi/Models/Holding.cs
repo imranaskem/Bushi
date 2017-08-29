@@ -8,7 +8,7 @@ using Bushi.Interfaces;
 
 namespace Bushi.Models
 {
-    public class Holding : IClan, ISide
+    public class Holding : IBasicCard
     {
         public bool Unique { get; }
         public CardType Type { get; }

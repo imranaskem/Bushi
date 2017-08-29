@@ -53,7 +53,7 @@
     <Compile Include="Enums\Set.cs" />
     <Compile Include="Enums\Side.cs" />
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Interfaces\IClan.cs" />
+    <Compile Include="Interfaces\IBasicCard.cs" />
     <Compile Include="JsonDtos\Card.cs" />
     <Compile Include="JsonDtos\Pack.cs" />
     <Compile Include="JsonDtos\PackInformation.cs" />

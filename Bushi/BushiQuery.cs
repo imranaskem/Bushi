@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using Newtonsoft.Json;
+using Bushi.Interfaces;
 
 namespace Bushi
 {
@@ -85,6 +86,13 @@ namespace Bushi
                 default:
                     return null;
             }
+        }
+
+        public IBasicCard GetCardByName(string name, bool overrideCache = false)
+        {
+            this.RefreshCardData(overrideCache);
+
+            return this.Cards.GetCardsByName(name);
         }
 
         private void RefreshCardData(bool overrideCache)

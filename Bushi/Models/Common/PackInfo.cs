@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bushi.Enums;
+using Bushi.Extensions;
 using Bushi.JsonDtos;
 
 namespace Bushi.Models.Common
@@ -17,18 +18,10 @@ namespace Bushi.Models.Common
 
         public PackInfo(PackInformation[] packInfo)
         {
-            this.Set = (Set)Enum.Parse(typeof(Set), this.ConvertWordToPascalCase(packInfo[0].Pack.Id));
+            this.Set = packInfo[0].Pack.Id.ConvertToEnum<Set>();
             this.NumberInSet = packInfo[0].Position;
             this.QuantityInSet = packInfo[0].Quantity;
             this.Illustrator = packInfo[0].Illustrator;
-        }
-
-        private string ConvertWordToPascalCase(string input)
-        {
-            string sentence = input.ToLower();
-
-            return sentence[0].ToString().ToUpper() +
-               sentence.Substring(1);
-        }
+        }        
     }
 }
