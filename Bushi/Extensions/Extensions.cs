@@ -36,7 +36,9 @@ namespace Bushi.Extensions
 
         public static T ConvertToEnum<T>(this string input)
         {
-            var value = (T)Enum.Parse(typeof(T), input, true);
+            var newInput = input.Replace("-", String.Empty);
+
+            var value = (T)Enum.Parse(typeof(T), newInput.ToString(), true);
 
             return value;
         }

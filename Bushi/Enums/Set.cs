@@ -8,6 +8,7 @@ namespace Bushi.Enums
 {
     public enum Set
     {
-        Core
+        Core,
+        TearsOfAmaterasu
     }
 }

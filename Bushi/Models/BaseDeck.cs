@@ -33,6 +33,11 @@ namespace Bushi.Models
             this.Cards.Add(card);
         }
 
+        public void AddRange(IEnumerable<T> collection)
+        {
+            this.Cards.AddRange(collection);
+        }
+
         public BaseDeck<T> GetCardsByClan(Clan clan)
         {
             var newDeck = new BaseDeck<T>();
@@ -75,10 +80,9 @@ namespace Bushi.Models
             }
             else
             {
-                var results = new BaseDeck<T>
-                {
-                    Cards = (List<T>)searchResults
-                };
+                var results = new BaseDeck<T>();
+
+                results.AddRange(searchResults);
 
                 return results;
 
