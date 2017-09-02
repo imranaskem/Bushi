@@ -88,7 +88,7 @@ namespace Bushi
             }
         }
 
-        public IBasicCard GetCardByName(string name, bool overrideCache = false)
+        public IEnumerable<IBasicCard> GetCardByName(string name, bool overrideCache = false)
         {
             this.RefreshCardData(overrideCache);
 

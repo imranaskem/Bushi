@@ -12,6 +12,7 @@ namespace Bushi.Interfaces
     {
         Clan Clan { get; }
         Side Side { get; }
+        string Name { get; }
         PackInfo PackInfo { get; }
     }
 }

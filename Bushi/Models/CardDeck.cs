@@ -77,9 +77,17 @@ namespace Bushi.Models
 
         public IEnumerable<IBasicCard> GetCardsByName(string name)
         {
-            var card = this.Attachments.SingleOrDefault(attachment => attachment.Name.ToLower().Contains(name.ToLower()));
+            var searchResults = new List<IBasicCard>();
 
-            return new IBasicCard[] { card };
+            searchResults.AddRange(this.Attachments.GetCardsByName(name));
+            searchResults.AddRange(this.Characters.GetCardsByName(name));
+            searchResults.AddRange(this.Events.GetCardsByName(name));
+            searchResults.AddRange(this.Holdings.GetCardsByName(name));
+            searchResults.AddRange(this.Provinces.GetCardsByName(name));
+            searchResults.AddRange(this.Roles.GetCardsByName(name));
+            searchResults.AddRange(this.Strongholds.GetCardsByName(name));
+
+            return searchResults;
         }        
 
         private void ParseCards(IEnumerable<Card> cards)

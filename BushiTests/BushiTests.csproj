@@ -50,6 +50,7 @@
     <Compile Include="BaseDeckTests.cs" />
     <Compile Include="AttachmentTests.cs" />
     <Compile Include="BushiQueryTests.cs" />
+    <Compile Include="CardDeckTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

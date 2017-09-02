@@ -64,5 +64,25 @@ namespace Bushi.Models
 
             return newDeck;
         }
+
+        public BaseDeck<T> GetCardsByName(string name)
+        {
+            var searchResults = this.Cards.Where(card => card.Name.ToLower().Contains(name.ToLower()));
+
+            if (searchResults == null)
+            {
+                return new BaseDeck<T>();
+            }
+            else
+            {
+                var results = new BaseDeck<T>
+                {
+                    Cards = (List<T>)searchResults
+                };
+
+                return results;
+
+            }
+        }
     }
 }

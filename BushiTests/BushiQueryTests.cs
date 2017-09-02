@@ -27,4 +27,14 @@ public class BushiQueryTests
 
         Assert.That(attachmentCards, Is.TypeOf<BaseDeck<Attachment>>());
     }
+
+    [Test]
+    public void GetCardsByNameTest()
+    {
+        var query = new BushiQuery();
+
+        var adeptCards = query.GetCardByName("adept", true);
+
+        Assert.That(adeptCards.Count, Is.EqualTo(3));
+    }
 }
