@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Bushi;
 using Bushi.Enums;
 using Bushi.Models;
+using System.Collections.Generic;
 
 [TestFixture]
 public class BushiQueryTests
@@ -33,8 +34,31 @@ public class BushiQueryTests
     {
         var query = new BushiQuery();
 
-        var adeptCards = query.GetCardByName("adept", true);
+        var clans = new List<Clan>
+        {
+            Clan.Dragon,
+            Clan.Scorpion,
+            Clan.Phoenix
+        };
 
-        Assert.That(adeptCards.Count, Is.EqualTo(3));
+        var searchTerm = "adept";
+
+        var adeptCards = query.GetCardByName(searchTerm, true);
+
+        Assert.That(adeptCards, Has.Exactly(3).Items);
+        Assert.That(adeptCards, Is.Unique);
+
+        var clanList = new List<Clan>();
+
+        foreach (var card in adeptCards)
+        {
+            Assert.That(card.Name, Does.Contain(searchTerm).IgnoreCase);
+            Assert.That(card, Is.TypeOf<Character>());
+            Assert.That(card.Type, Is.EqualTo(CardType.Character));
+
+            clanList.Add(card.Clan);
+        }
+
+        Assert.That(clanList, Is.EquivalentTo(clans));
     }
 }

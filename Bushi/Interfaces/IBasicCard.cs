@@ -10,6 +10,7 @@ namespace Bushi.Interfaces
 {
     public interface IBasicCard
     {
+        CardType Type { get; }
         Clan Clan { get; }
         Side Side { get; }
         string Name { get; }
