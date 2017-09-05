@@ -1,21 +1,18 @@
 ﻿using Bushi.Enums;
-using Bushi.Models;
+using Bushi.Interfaces;
 using Bushi.JsonDtos;
+using Bushi.Models;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RestSharp;
-using Newtonsoft.Json;
-using Bushi.Interfaces;
 
 namespace Bushi
 {
     public class BushiQuery
     {
-        private const string baseUri = "http://fiveringsdb.com/";
+        private const string baseUri = "http://fiveringsdb.com";
         private const string cardsUri = "/cards";
 
         private CardDeck Cards { get; set; }
@@ -61,6 +58,13 @@ namespace Bushi
             this.RefreshCardData(overrideCache);
 
             return this.Cards.GetAllCardsBySide(side);
+        }
+
+        public CardDeck GetAllCardsOfSet(Set set, bool overrideCache = false)
+        {
+            this.RefreshCardData(overrideCache);
+
+            return this.Cards.GetCardsBySet(set);
         }
         
         public IEnumerable GetCardsOfType(CardType type, bool overrideCache = false)

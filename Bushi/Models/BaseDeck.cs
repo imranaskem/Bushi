@@ -65,6 +65,22 @@ namespace Bushi.Models
             return newDeck;
         }
 
+        public BaseDeck<T> GetCardsBySet(Set set)
+        {
+            var basedeck = new BaseDeck<T>();
+
+            var setCards = this.Cards.Where(card => card.PackInfo.Set == set).ToList();
+
+            if (setCards == null)
+            {
+                return (BaseDeck<T>)Enumerable.Empty<T>();
+            }
+
+            basedeck.Cards = setCards;
+
+            return basedeck;
+        }
+
         public BaseDeck<T> GetCardsByName(string name)
         {
             var searchResults = this.Cards.Where(card => card.Name.ToLower().Contains(name.ToLower()));

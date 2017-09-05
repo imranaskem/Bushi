@@ -88,7 +88,23 @@ namespace Bushi.Models
             searchResults.AddRange(this.Strongholds.GetCardsByName(name));
 
             return searchResults;
-        }        
+        }    
+        
+        public CardDeck GetCardsBySet(Set set)
+        {
+            var newCardDeck = new CardDeck
+            {
+                Attachments = this.Attachments.GetCardsBySet(set),
+                Characters = this.Characters.GetCardsBySet(set),
+                Events = this.Events.GetCardsBySet(set),
+                Holdings = this.Holdings.GetCardsBySet(set),
+                Provinces = this.Provinces.GetCardsBySet(set),
+                Roles = this.Roles.GetCardsBySet(set),
+                Strongholds = this.Strongholds.GetCardsBySet(set)
+            };
+
+            return newCardDeck;
+        }
 
         private void ParseCards(IEnumerable<Card> cards)
         {

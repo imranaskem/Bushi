@@ -51,6 +51,7 @@
     <Compile Include="AttachmentTests.cs" />
     <Compile Include="BushiQueryTests.cs" />
     <Compile Include="CardDeckTests.cs" />
+    <Compile Include="ExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
