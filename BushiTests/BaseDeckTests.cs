@@ -43,6 +43,8 @@ public class BaseDeckTests
         deck.Add(attachment);
         deck.Add(attachment);
 
+        Assert.That(deck, Has.Exactly(4).Items);
+
         foreach (var item in deck)
         {
             Assert.That(item.Unique, Is.EqualTo(true));
