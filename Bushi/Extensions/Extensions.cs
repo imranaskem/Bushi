@@ -38,7 +38,7 @@ namespace Bushi.Extensions
         {
             var newInput = input.Replace("-", String.Empty);
 
-            var value = (T)Enum.Parse(typeof(T), newInput.ToString(), true);
+            var value = (T)Enum.Parse(typeof(T), newInput, true);
 
             return value;
         }
