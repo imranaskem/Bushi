@@ -12,7 +12,7 @@ namespace Bushi
 {
     public class BushiQuery
     {
-        private const string baseUri = "http://fiveringsdb.com";
+        private const string baseUri = "https://api.fiveringsdb.com";
         private const string cardsUri = "/cards";
 
         private CardDeck Cards { get; set; }
